@@ -17,7 +17,7 @@ export class App extends Component {
       this.setState({
         inventory: res.data
       })
-      console.log('component did mount working?')
+      console.log('componentDidMount is WORKING!')
     })
   }
   addProducts = (product) => {
@@ -29,7 +29,7 @@ export class App extends Component {
     })
   }
   editProducts = (id, name, price, img) => {
-
+    // axios.put(`http://localhost:4007/api/products`)
   }
   deleteProduct = (id) => {
     axios.delete(`http://localhost:4007/api/products/${id}`).then(res => {
@@ -40,10 +40,23 @@ export class App extends Component {
   }
   render() {
     console.log(this.state.inventory)
+    // const allProducts = this.state.inventory.map(product => {
+    //   return (
+    //     <Product
+    //       key={product.id}
+    //       product={product}
+    //       deleteProduct={this.deleteProduct}
+
+    //     />
+    //   )
+    // })
     return (
-      <div>
+      <div className="master-div">
         <Header/>
-        <Dashboard/>
+        <Dashboard
+          products={this.state.inventory}
+          deleteProduct={this.deleteProduct}
+        />
         <Form/>
       </div>
     )
