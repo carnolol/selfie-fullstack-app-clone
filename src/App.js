@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import routes from './routes'
 import Header from './components/Header'
 import Dashboard from './components/Dashboard'
 import Form from './components/Form'
@@ -57,7 +58,9 @@ export class App extends Component {
           products={this.state.inventory}
           deleteProduct={this.deleteProduct}
         />
-        <Form/>
+        <Form
+          addProducts={this.addProducts}
+          editProducts={this.editProducts}/>
       </div>
     )
   }

@@ -8,36 +8,70 @@ class Form extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            displayImage: true,
             name: "",
-            price: 0,
+            price: "",
             img: ""
         }
     }
-    handleChange = () => { //this needs to also clear the input boxes when clicked. 
-
+    handleChange = (e) => { 
+        this.setState({
+            [e.target.name]: e.target.value,
+        })
     }
-    addNewProduct = () => { // think this should be in app js then passed down as props but their compent tree has it here? 
-
+    addNewProduct = () => { // clear input boxes also
+        const newProduct = {
+            name: this.state.name,
+            price: this.state.price,
+            img: this.state.img
+        }
+        this.props.addProducts(newProduct)
+        this.setState({
+            name:'',
+            price:'',
+            img:''
+        })
     }
     render() {
+        console.log(this.state)
         return (
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
-                    <img></img>
-                    <p>
-                        Image URL:
-                        <input></input>
-                    </p>
-                    <p>
-                        Product Name:
-                        <input></input>
-                    </p>
-                    <p>
-                        Price:
-                        <input></input>
-                    </p>
+                    <img
+                        className="add-img"
+                        src={this.state.img}></img>
+                    <div className="add-inventory-children">
+                        <p>
+                            Image URL:
+                        </p>
+                        <input
+                            name="img"
+                            value={this.state.img}
+                            onChange={e => this.handleChange(e)}>
+                        </input>
+                    </div>
+                    <div className="add-inventory-children">
+                        <p>
+                            Product Name:
+                        </p>
+                        <input
+                            name="name"
+                            value={this.state.name}
+                            onChange={e => this.handleChange(e)}>
+                        </input>
+                    </div>
+                    <div className="add-inventory-children">
+                        <p>
+                            Price:
+                        </p>
+                        <input
+                            name="price"
+                            value={this.state.price}
+                            onChange={e => this.handleChange(e)}>
+                        </input>
+                    </div>
                     <button>Cancel</button>
-                    <button>Add to Inventory</button>
+                    <button onClick={this.addNewProduct}>Add to Inventory</button>
                 </div>
             </div>
         )

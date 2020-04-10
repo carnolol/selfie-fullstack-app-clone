@@ -4,27 +4,14 @@ import React, { Component } from 'react'
 
 // this will be the product container
 
-
-export class Dashboard extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            name: "",
-            price: "",
-            img: ""
-        }
-    }
-    addNewProduct = () => { // think this should be in app js then passed down as props but their compent tree has it here? 
-
-    }
-    render() {
+function Dashboard(props) {
         // console.log(this.props.deleteProduct)
-        const allProducts = this.props.products.map(product => {
+        const allProducts = props.products.map(product => {
             return (
               <Product
                 key={product.id}
                 product={product}
-                deleteProduct={this.props.deleteProduct}
+                deleteProduct={props.deleteProduct}
               />
             )
           })
@@ -34,6 +21,5 @@ export class Dashboard extends Component {
             </div>
         )
     }
-}
 
 export default Dashboard
