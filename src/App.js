@@ -30,7 +30,11 @@ export class App extends Component {
     })
   }
   editProducts = (id, name, price, img) => {
-    // axios.put(`http://localhost:4007/api/products`)
+    axios.put(`http://localhost:4007/api/products/${id}`, {name, price, img}).then(res => {
+      this.setState({
+        inventory: res.data
+      })
+    }).catch(error => console.log(`error w/ editProducts Frontend${error}`))
   }
   deleteProduct = (id) => {
     axios.delete(`http://localhost:4007/api/products/${id}`).then(res => {
@@ -38,6 +42,7 @@ export class App extends Component {
         inventory: res.data
       })
     })
+    this.componentDidMount()
   }
   render() {
     console.log(this.state.inventory)
@@ -59,6 +64,7 @@ export class App extends Component {
           deleteProduct={this.deleteProduct}
         />
         <Form
+          componentDidMount={this.componentDidMount}
           addProducts={this.addProducts}
           editProducts={this.editProducts}/>
       </div>

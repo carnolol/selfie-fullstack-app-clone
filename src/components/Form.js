@@ -26,11 +26,15 @@ class Form extends Component {
             img: this.state.img
         }
         this.props.addProducts(newProduct)
+        this.props.componentDidMount()
         this.setState({
             name:'',
             price:'',
             img:''
         })
+    }
+    handleEditProduct = () => {
+        this.props.editProducts(this.props.product.id, )
     }
     render() {
         console.log(this.state)
@@ -38,6 +42,7 @@ class Form extends Component {
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
                     <img
+                        alt="Img here"
                         className="add-img"
                         src={this.state.img}></img>
                     <div className="add-inventory-children">
