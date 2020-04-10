@@ -1,6 +1,6 @@
 import '../App.css'
 import Product from './Product'
-import React, { Component } from 'react'
+import React from 'react'
 
 // this will be the product container
 

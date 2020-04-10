@@ -24,7 +24,7 @@ function Product(props) {
                     </h4>
                     <br></br>
                     <button onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
-                    <button>Edit</button>
+                    <button>Edit </button>
                 </div>
             </div>
         </div>

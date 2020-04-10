@@ -46,16 +46,6 @@ export class App extends Component {
   }
   render() {
     console.log(this.state.inventory)
-    // const allProducts = this.state.inventory.map(product => {
-    //   return (
-    //     <Product
-    //       key={product.id}
-    //       product={product}
-    //       deleteProduct={this.deleteProduct}
-
-    //     />
-    //   )
-    // })
     return (
       <div className="master-div">
         <Header/>

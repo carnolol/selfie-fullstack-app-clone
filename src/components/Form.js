@@ -42,7 +42,7 @@ class Form extends Component {
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
                     <img
-                        alt="Img here"
+                        alt="no img yet"
                         className="add-img"
                         src={this.state.img}></img>
                     <div className="add-inventory-children">
