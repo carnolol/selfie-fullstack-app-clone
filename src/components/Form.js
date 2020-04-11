@@ -8,10 +8,10 @@ class Form extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            displayImage: true,
             name: "",
             price: "",
-            img: ""
+            img: "",
+            editing: true
         }
     }
     handleChange = (e) => {
@@ -41,7 +41,13 @@ class Form extends Component {
         })
     }
     handleEditProduct = () => {
-        this.props.editProducts(this.props.product.id)
+        const updatedProduct = {
+            name: this.state.name,
+            price: this.state.price,
+            img: this.state.img
+        }
+        this.props.editProducts(this.props.product.id, updatedProduct)
+        this.props.componentDidMount()
     }
     render() {
         // console.log(this.state)

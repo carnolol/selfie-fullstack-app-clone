@@ -27,10 +27,11 @@ export class App extends Component {
         inventory: res.data
       })
       console.log('add products working?')
+      this.componentDidMount()
     })
   }
-  editProducts = (id, name, price, img) => {
-    axios.put(`http://localhost:4007/api/products/${id}`, { name, price, img }).then(res => {
+  editProducts = (id, updatedProduct) => {
+    axios.put(`http://localhost:4007/api/products/${id}`, updatedProduct).then(res => {
       this.setState({
         inventory: res.data
       })
@@ -39,9 +40,9 @@ export class App extends Component {
   deleteProduct = (id) => {
     axios.delete(`http://localhost:4007/api/products/${id}`).then(res => {
       this.componentDidMount()
-      this.setState({
-        inventory: res.data
-      })
+      // this.setState({
+      //   inventory: res.data
+      // })
     })
   }
   render() {
@@ -51,6 +52,7 @@ export class App extends Component {
         
           <Dashboard
             products={this.state.inventory}
+            componentDidMount={this.componentDidMount}
             editProducts={this.editProducts}
             deleteProduct={this.deleteProduct}
           />

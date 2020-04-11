@@ -15,9 +15,9 @@ module.exports = {
     editProduct:(req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
-        const {name, price, img} = req.body
-        db.edit_product({id, name, price, img}).then(editedProduct => {
-            res.status(200).send(editedProduct)
+        const updatedProduct = {id, ...req.body}
+        db.edit_product(updatedProduct).then(updatedProduct => {
+            res.status(200).send(updatedProduct)
         }).catch(error => console.log(`error with editProduct ${error}`))
     },
     deleteProduct:(req,res) => {

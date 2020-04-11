@@ -21,6 +21,16 @@
   width: 50px;
 }
 
+.dashboard-button{
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #ED6B5A;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+
+}
+
 /* .parent-add-inventory-container{
   display: flex;
   justify-content: center;
@@ -74,8 +84,9 @@ input{
   padding: 10px;
   background-color: #ED6B5A;
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   margin: 20px;
+  font-weight: bold;
 }
 
 .parent-product-container{

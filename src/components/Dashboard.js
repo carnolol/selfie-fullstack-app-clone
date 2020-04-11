@@ -10,7 +10,8 @@ export class Dashboard extends Component {
         this.state = {
             name: "",
             price: "",
-            img: ""
+            img: "",
+            editing: false
         }
     }
     render() {
