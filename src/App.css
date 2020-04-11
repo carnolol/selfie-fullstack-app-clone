@@ -21,10 +21,10 @@
   width: 50px;
 }
 
-.parent-add-inventory-container{
-  /* display: flex;
-  justify-content: center; */
-}
+/* .parent-add-inventory-container{
+  display: flex;
+  justify-content: center;
+} */
 
 .master-div{
   display: flex;
@@ -55,15 +55,27 @@
 }
 
 .add-img{
-  background-image: url('https://pvsmt99345.i.lithium.com/t5/image/serverpage/image-id/10546i3DAC5A5993C8BC8C?v=1.0');
   background-size: contain;
-  width: 75%;
+  width: 60%;
   height: 50%;
   border: 1px solid black;
 }
 
 input{
   width: 90%;
+}
+
+.form-buttons{
+  display: flex;
+
+}
+
+.form-button{
+  padding: 10px;
+  background-color: #ED6B5A;
+  border: none;
+  border-radius: 10px;
+  margin: 20px;
 }
 
 .parent-product-container{
@@ -86,7 +98,7 @@ input{
 
 .product-image{
   height: 25vh;
-  width: 18vw;
+  width: 17vw;
   padding-left: 1vw;
 }
 
@@ -96,4 +108,26 @@ input{
   justify-content: space-around;
   align-items: flex-start;
   padding-left: 5%;
+}
+
+.product-buttons{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  align-content: space-around;
+} 
+
+.product-button{
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #3AD886;
+  border: none;
+  border-radius: 10px;
+  margin-left: 35px;
+}
+
+button:hover{
+  cursor: pointer;
 }

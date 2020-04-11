@@ -1,25 +1,35 @@
 import '../App.css'
 import Product from './Product'
-import React from 'react'
+import React, { Component } from 'react'
 
 // this will be the product container
 
-function Dashboard(props) {
+export class Dashboard extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: "",
+            price: "",
+            img: ""
+        }
+    }
+    render() {
         // console.log(this.props.deleteProduct)
-        const allProducts = props.products.map(product => {
+        const allProducts = this.props.products.map(product => {
             return (
-              <Product
-                key={product.id}
-                product={product}
-                deleteProduct={props.deleteProduct}
-              />
+                <Product
+                    key={product.id}
+                    product={product}
+                    deleteProduct={this.props.deleteProduct}
+                />
             )
-          })
+        })
         return (
             <div >
                 {allProducts}
             </div>
         )
     }
-
+}
 export default Dashboard
+

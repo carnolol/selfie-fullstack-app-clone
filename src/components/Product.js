@@ -11,8 +11,9 @@ function Product(props) {
         <div className="parent-product-container">
             <div className="product-container">
                 <img
+                    alt="product img"
                     className="product-image"
-                    src={props.product.img} />
+                    src={props.product.img ? `${props.product.img}` : 'https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/devmountain/original.png?1568083750'} />
                 <div className="name-price-buttons-of-products">
                     <h4
                         className="product-name">
@@ -23,8 +24,12 @@ function Product(props) {
                         ${props.product.price}
                     </h4>
                     <br></br>
-                    <button onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
-                    <button>Edit </button>
+                    <div className="product-buttons">
+                        <button className="product-button" 
+                        onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
+                        <button className="product-button" 
+                        >Edit </button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -14,12 +14,19 @@ class Form extends Component {
             img: ""
         }
     }
-    handleChange = (e) => { 
+    handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
         })
     }
-    addNewProduct = () => { // clear input boxes also
+    handleCancel = () => {
+        this.setState({
+            name: '',
+            price: '',
+            img: ''
+        })
+    }
+    handleAddNewProduct = () => { // clear input boxes also
         const newProduct = {
             name: this.state.name,
             price: this.state.price,
@@ -28,23 +35,23 @@ class Form extends Component {
         this.props.addProducts(newProduct)
         this.props.componentDidMount()
         this.setState({
-            name:'',
-            price:'',
-            img:''
+            name: '',
+            price: '',
+            img: ''
         })
     }
     handleEditProduct = () => {
-        this.props.editProducts(this.props.product.id, )
+        this.props.editProducts(this.props.product.id)
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
                     <img
                         alt="no img yet"
                         className="add-img"
-                        src={this.state.img}></img>
+                        src={this.state.img ? `${this.state.img}` : 'https://pvsmt99345.i.lithium.com/t5/image/serverpage/image-id/10546i3DAC5A5993C8BC8C?v=1.0'}></img>
                     <div className="add-inventory-children">
                         <p>
                             Image URL:
@@ -75,8 +82,13 @@ class Form extends Component {
                             onChange={e => this.handleChange(e)}>
                         </input>
                     </div>
-                    <button>Cancel</button>
-                    <button onClick={this.addNewProduct}>Add to Inventory</button>
+                    <div className="form-buttons">
+                        <button className="form-button"
+                            onClick={this.handleCancel}
+                        >Cancel</button>
+                        <button className="form-button"
+                         onClick={this.handleAddNewProduct}>Add to Inventory</button>
+                    </div>
                 </div>
             </div>
         )

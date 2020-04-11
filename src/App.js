@@ -7,10 +7,10 @@ import Form from './components/Form'
 //product is a functional componenent child of Dashboard.js
 
 export class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      inventory:[]
+      inventory: []
     }
   }
   componentDidMount = () => {
@@ -30,7 +30,7 @@ export class App extends Component {
     })
   }
   editProducts = (id, name, price, img) => {
-    axios.put(`http://localhost:4007/api/products/${id}`, {name, price, img}).then(res => {
+    axios.put(`http://localhost:4007/api/products/${id}`, { name, price, img }).then(res => {
       this.setState({
         inventory: res.data
       })
@@ -38,25 +38,27 @@ export class App extends Component {
   }
   deleteProduct = (id) => {
     axios.delete(`http://localhost:4007/api/products/${id}`).then(res => {
+      this.componentDidMount()
       this.setState({
         inventory: res.data
       })
     })
-    this.componentDidMount()
   }
   render() {
-    console.log(this.state.inventory)
     return (
       <div className="master-div">
-        <Header/>
-        <Dashboard
-          products={this.state.inventory}
-          deleteProduct={this.deleteProduct}
-        />
-        <Form
-          componentDidMount={this.componentDidMount}
-          addProducts={this.addProducts}
-          editProducts={this.editProducts}/>
+        <Header />
+        
+          <Dashboard
+            products={this.state.inventory}
+            editProducts={this.editProducts}
+            deleteProduct={this.deleteProduct}
+          />
+          <Form
+            componentDidMount={this.componentDidMount}
+            addProducts={this.addProducts}
+            // editProducts={this.editProducts} 
+          />
       </div>
     )
   }
