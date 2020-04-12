@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
+import axios from 'axios'
 
 
 // this is the green edit box component
@@ -52,16 +53,17 @@ class Form extends Component {
     // }
     componentDidUpdate = (prevProps) => {
         console.warn('prevProps', prevProps)
-        console.warn('props', this.props.product)
-        if(){
-            
+        console.warn('props', this.props.products[0])
+        if (prevProps.product.id !== this.props.product.id) {
+            axios.get(`http://localhost:4007/api/products/?id=${this.props.product.id}`).then(res => {
+                console.log('hit', res.data[0])
+                this.setState({ currentProductId: res.data })
+            })
         }
-        // this.setState({
-        //     currentProductId: this.props.productId
-        // })
 
     }
     render() {
+        console.log('TEST', this.props.product.id)
         console.log(this.props.product)
         return (
             <div className="parent-add-inventory-container">

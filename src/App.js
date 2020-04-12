@@ -47,12 +47,12 @@ export class App extends Component {
       // })
     })
   }
-  // productToEdit = (id) => {
-  //   this.setState({
-  //     productToEdit: id
-  //   })
-  //   console.log(id)
-  // }
+  productToEdit = (id) => {
+    this.setState({
+      productToEdit: id
+    })
+    console.log(id)
+  }
   // productId = () => {
   //   const productId = this.state.inventory.map(product => product.id)
   //   console.log(productId)
@@ -76,7 +76,7 @@ export class App extends Component {
             productId={productId}
             componentDidMount={this.componentDidMount}
             addProducts={this.addProducts}
-            // productToEdit={this.productToEdit}
+            productToEdit={this.productToEdit}
             editProducts={this.editProducts} 
           />
       </div>
