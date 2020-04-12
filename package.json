@@ -38,18 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/carnolol/selfie-fullstack-app-clone.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/carnolol/selfie-fullstack-app-clone/issues"
-  },
-  "homepage": "https://github.com/carnolol/selfie-fullstack-app-clone#readme"
+  }
 }

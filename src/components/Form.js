@@ -11,7 +11,8 @@ class Form extends Component {
             name: "",
             price: "",
             img: "",
-            editing: true
+            editmode: true,
+            currentProductId: null
         }
     }
     handleChange = (e) => {
@@ -40,17 +41,28 @@ class Form extends Component {
             img: ''
         })
     }
-    handleEditProduct = () => {
-        const updatedProduct = {
-            name: this.state.name,
-            price: this.state.price,
-            img: this.state.img
+    // handleEditProduct = () => {
+    //     const updatedProduct = {
+    //         name: this.state.name,
+    //         price: this.state.price,
+    //         img: this.state.img
+    //     }
+    //     this.props.editProducts(this.props.product.id, updatedProduct)
+    //     this.props.componentDidMount()
+    // }
+    componentDidUpdate = (prevProps) => {
+        console.warn('prevProps', prevProps)
+        console.warn('props', this.props.product)
+        if(){
+            
         }
-        this.props.editProducts(this.props.product.id, updatedProduct)
-        this.props.componentDidMount()
+        // this.setState({
+        //     currentProductId: this.props.productId
+        // })
+
     }
     render() {
-        // console.log(this.state)
+        console.log(this.props.product)
         return (
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
@@ -91,9 +103,11 @@ class Form extends Component {
                     <div className="form-buttons">
                         <button className="form-button"
                             onClick={this.handleCancel}
-                        >Cancel</button>
+                        >Cancel
+                        </button>
                         <button className="form-button"
-                         onClick={this.handleAddNewProduct}>Add to Inventory</button>
+                            onClick={this.handleAddNewProduct}>Add to Inventory
+                         </button>
                     </div>
                 </div>
             </div>
