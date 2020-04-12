@@ -5,15 +5,6 @@ import React, { Component } from 'react'
 // this will be the product container
 
 export class Dashboard extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: "",
-            price: "",
-            img: "",
-            editing: false
-        }
-    }
     render() {
         // console.log(this.props.deleteProduct)
         const allProducts = this.props.products.map(product => {
@@ -21,6 +12,7 @@ export class Dashboard extends Component {
                 <Product
                     key={product.id}
                     product={product}
+                    productToEdit={this.props.productToEdit}
                     deleteProduct={this.props.deleteProduct}
                 />
             )

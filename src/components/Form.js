@@ -53,13 +53,22 @@ class Form extends Component {
     // }
     componentDidUpdate = (prevProps) => {
         console.warn('prevProps', prevProps)
-        console.warn('props', this.props.products[0])
-        if (prevProps.product.id !== this.props.product.id) {
+        console.warn('this props', this.props.productImEditing)
+        // let index = this.props.products.findIndex(product => {
+        //     return product.id === +id
+        // })
+        // console.log('index', index)
+        if (prevProps.product.id === this.state.currentProductId) {
             axios.get(`http://localhost:4007/api/products/?id=${this.props.product.id}`).then(res => {
-                console.log('hit', res.data[0])
-                this.setState({ currentProductId: res.data })
+                console.log('hit', res.data)
+                this.setState({ 
+                    name: res.data[0].name
+                 })
+                console.log('this is the state', this.state)
             })
-        }
+        // } else {
+        //     this.setState({currentProductId: null})
+         }
 
     }
     render() {

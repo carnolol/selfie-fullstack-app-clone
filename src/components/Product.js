@@ -28,7 +28,8 @@ function Product(props) {
                         <button className="product-button" 
                         onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
                         <button className="product-button" 
-                        >Edit </button>
+                        onClick={() => props.productToEdit(props.product.id)}
+                        >Edit {props.product.id}</button>
                     </div>
                 </div>
             </div>

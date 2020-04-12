@@ -11,7 +11,7 @@ export class App extends Component {
     super(props)
     this.state = {
       inventory: [],
-      productToEdit:0
+      productToEdit: 0
     }
   }
   componentDidMount = () => {
@@ -42,9 +42,6 @@ export class App extends Component {
     axios.delete(`http://localhost:4007/api/products/${id}`).then(res => {
       this.componentDidMount()
       console.log(res)
-      // this.setState({
-      //   inventory: res.data
-      // })
     })
   }
   productToEdit = (id) => {
@@ -53,21 +50,16 @@ export class App extends Component {
     })
     console.log(id)
   }
-  // productId = () => {
-  //   const productId = this.state.inventory.map(product => product.id)
-  //   console.log(productId)
-  // }
   render() {
     const productId = this.state.inventory.map(product => product.id)
     const product = this.state.inventory.map(product => product)
     return (
       <div className="master-div">
         <Header />
-        
           <Dashboard
             products={this.state.inventory}
             componentDidMount={this.componentDidMount}
-            editProducts={this.editProducts}
+            productToEdit={this.productToEdit}
             deleteProduct={this.deleteProduct}
           />
           <Form
@@ -76,9 +68,10 @@ export class App extends Component {
             productId={productId}
             componentDidMount={this.componentDidMount}
             addProducts={this.addProducts}
-            productToEdit={this.productToEdit}
+            productImEditing={this.state.productToEdit}
             editProducts={this.editProducts} 
           />
+          {/* {routes} */}
       </div>
     )
   }
