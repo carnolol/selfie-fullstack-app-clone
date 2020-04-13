@@ -15,7 +15,7 @@ export class App extends Component {
     }
   }
   componentDidMount = () => {
-    axios.get(`http://localhost:4007/api/products`).then(res => {
+    axios.get(`/api/inventory`).then(res => {
       this.setState({
         inventory: res.data
       })
@@ -23,7 +23,7 @@ export class App extends Component {
     })
   }
   addProducts = (product) => {
-    axios.post(`http://localhost:4007/api/products`, product).then(res => {
+    axios.post(`/api/products`, product).then(res => {
       this.setState({
         inventory: res.data
       })
@@ -32,14 +32,14 @@ export class App extends Component {
     })
   }
   editProducts = (id, updatedProduct) => {
-    axios.put(`http://localhost:4007/api/products/${id}`, updatedProduct).then(res => {
+    axios.put(`/api/products/${id}`, updatedProduct).then(res => {
       this.setState({
         inventory: res.data
       })
     }).catch(error => console.log(`error w/ editProducts Frontend${error}`))
   }
   deleteProduct = (id) => {
-    axios.delete(`http://localhost:4007/api/products/${id}`).then(res => {
+    axios.delete(`/api/products/${id}`).then(res => {
       this.componentDidMount()
       console.log(res)
     })

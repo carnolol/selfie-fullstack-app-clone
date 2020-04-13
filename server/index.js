@@ -1,10 +1,10 @@
 const massive = require('massive')
 const express = require('express')
 const productCtrl = require('./controllers/productController')
-const cors = require('cors')
+// const cors = require('cors')
 require('dotenv').config()
 const app = express()
-app.use(cors())
+// app.use(cors())
 app.use(express.json())
 const{SERVER_PORT, CONNECTION_STRING}=process.env
 
@@ -20,7 +20,7 @@ massive({
 
 
 
-app.get('/api/products', productCtrl.getAllProducts)
+app.get('/api/inventory', productCtrl.getAllProducts)
 app.post('/api/products', productCtrl.addProduct)
 app.put('/api/products/:id', productCtrl.editProduct)
 app.delete('/api/products/:id', productCtrl.deleteProduct)
