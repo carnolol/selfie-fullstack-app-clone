@@ -11,7 +11,7 @@ export class App extends Component {
     super(props)
     this.state = {
       inventory: [],
-      productToEdit: 0
+      productIWantToEdit: 0
     }
   }
   componentDidMount = () => {
@@ -48,11 +48,11 @@ export class App extends Component {
     this.setState({
       productToEdit: id
     })
-    console.log(id)
   }
   render() {
     const productId = this.state.inventory.map(product => product.id)
     const product = this.state.inventory.map(product => product)
+    console.log('STATE ON APP.JS', this.state.productToEdit)
     return (
       <div className="master-div">
         <Header />
@@ -68,7 +68,7 @@ export class App extends Component {
             productId={productId}
             componentDidMount={this.componentDidMount}
             addProducts={this.addProducts}
-            productImEditing={this.state.productToEdit}
+            productImEditing={this.state.productIWantToEdit}
             editProducts={this.editProducts} 
           />
           {/* {routes} */}

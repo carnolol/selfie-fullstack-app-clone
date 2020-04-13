@@ -43,37 +43,35 @@ class Form extends Component {
         })
     }
     // handleEditProduct = () => {
-    //     const updatedProduct = {
-    //         name: this.state.name,
-    //         price: this.state.price,
-    //         img: this.state.img
-    //     }
+        // const updatedProduct = {
+        //     name: this.state.name,
+        //     price: this.state.price,
+        //     img: this.state.img
+        // }
     //     this.props.editProducts(this.props.product.id, updatedProduct)
     //     this.props.componentDidMount()
     // }
     componentDidUpdate = (prevProps) => {
         console.warn('prevProps', prevProps)
-        console.warn('this props', this.props.productImEditing)
-        // let index = this.props.products.findIndex(product => {
-        //     return product.id === +id
-        // })
-        // console.log('index', index)
-        if (prevProps.product.id === this.state.currentProductId) {
-            axios.get(`http://localhost:4007/api/products/?id=${this.props.product.id}`).then(res => {
-                console.log('hit', res.data)
-                this.setState({ 
-                    name: res.data[0].name
-                 })
-                console.log('this is the state', this.state)
+        console.log('this props', this.props.productImEditing)
+        const updatedProduct = {
+            name: this.state.name,
+            price: this.state.price,
+            img: this.state.img
+        }
+        if (prevProps.productImEditing === this.state.currentProductId) {
+            axios.get(`http://localhost:4007/api/products/?id=${prevProps.productImEditing}`).then(res => {
+                axios.put(`http://localhost:4007/api/products/${this.state.currentProductId}`, updatedProduct)
+                // console.log('inside of Component Did Update', prevProps.productImEditing)
             })
-        // } else {
-        //     this.setState({currentProductId: null})
          }
 
     }
     render() {
-        console.log('TEST', this.props.product.id)
-        console.log(this.props.product)
+        console.log('STATE OF FORM.JS', this.state.currentProductId)
+
+        // console.log('TEST', this.props.product.id)
+        // console.log(this.props.product)
         return (
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
