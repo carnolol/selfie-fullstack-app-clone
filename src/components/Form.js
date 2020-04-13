@@ -60,8 +60,8 @@ class Form extends Component {
             img: this.state.img
         }
         if (prevProps.productImEditing === this.state.currentProductId) {
-            axios.get(`http://localhost:4007/api/products/?id=${prevProps.productImEditing}`).then(res => {
-                axios.put(`http://localhost:4007/api/products/${this.state.currentProductId}`, updatedProduct)
+            axios.get(`/api/inventory/?id=${prevProps.productImEditing}`).then(res => {
+                axios.put(`/api/products/${this.state.currentProductId}`, updatedProduct)
                 // console.log('inside of Component Did Update', prevProps.productImEditing)
             })
          }

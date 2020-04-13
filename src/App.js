@@ -50,8 +50,8 @@ export class App extends Component {
     })
   }
   render() {
-    const productId = this.state.inventory.map(product => product.id)
-    const product = this.state.inventory.map(product => product)
+    // const productId = this.state.inventory.map(product => product.id)
+    // const product = this.state.inventory.map(product => product)
     console.log('STATE ON APP.JS', this.state.productToEdit)
     return (
       <div className="master-div">
@@ -64,8 +64,8 @@ export class App extends Component {
           />
           <Form
             products={this.state.inventory}
-            product={product}
-            productId={productId}
+            // product={product}
+            // productId={productId}
             componentDidMount={this.componentDidMount}
             addProducts={this.addProducts}
             productImEditing={this.state.productIWantToEdit}
