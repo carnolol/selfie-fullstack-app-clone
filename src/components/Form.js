@@ -36,11 +36,7 @@ class Form extends Component {
         }
         this.props.addProducts(newProduct)
         this.props.componentDidMount()
-        this.setState({
-            name: '',
-            price: '',
-            img: ''
-        })
+        this.handleCancel()
     }
     // handleEditProduct = () => {
         // const updatedProduct = {
@@ -52,23 +48,24 @@ class Form extends Component {
     //     this.props.componentDidMount()
     // }
     componentDidUpdate = (prevProps) => {
-        console.warn('prevProps', prevProps)
+        console.log('prevProps', prevProps)
         console.log('this props', this.props.productImEditing)
-        const updatedProduct = {
-            name: this.state.name,
-            price: this.state.price,
-            img: this.state.img
-        }
-        if (prevProps.productImEditing === this.state.currentProductId) {
-            axios.get(`/api/inventory/?id=${prevProps.productImEditing}`).then(res => {
-                axios.put(`/api/products/${this.state.currentProductId}`, updatedProduct)
-                // console.log('inside of Component Did Update', prevProps.productImEditing)
+        if (prevProps.productImEditing !== this.state.currentProductId) {
+            axios.get(`/api/inventory/${this.props.productImEditing}`).then(res => {
+                console.log('product im going to update', res.data)
+                this.setState({
+                    name: res.data[0].name,
+                    price: res.data[0].price,
+                    img: res.data[0].img
+                })
+                console.log('res data name' , res.data.name)
             })
          }
 
     }
     render() {
         console.log('STATE OF FORM.JS', this.state.currentProductId)
+        console.log('wub', this.props.productImEditing)
 
         // console.log('TEST', this.props.product.id)
         // console.log(this.props.product)

@@ -25,10 +25,10 @@ function Product(props) {
                     </h4>
                     <br></br>
                     <div className="product-buttons">
-                        <button className="product-button" 
-                        onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
-                        <button className="product-button" 
-                        onClick={() => props.productToEdit(props.product.id)}
+                        <button className="product-button"
+                            onClick={() => props.deleteProduct(props.product.id)}>Delete</button>
+                        <button className="product-button"
+                            onClick={() => props.productToEdit(props.product.id)}
                         >Edit {props.product.id}</button>
                     </div>
                 </div>

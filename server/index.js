@@ -21,6 +21,7 @@ massive({
 
 
 app.get('/api/inventory', productCtrl.getAllProducts)
+app.get('/api/inventory/:id', productCtrl.getOneProduct)
 app.post('/api/products', productCtrl.addProduct)
 app.put('/api/products/:id', productCtrl.editProduct)
 app.delete('/api/products/:id', productCtrl.deleteProduct)

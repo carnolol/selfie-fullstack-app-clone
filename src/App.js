@@ -22,8 +22,8 @@ export class App extends Component {
       // console.log('componentDidMount is WORKING!')
     })
   }
-  addProducts = (product) => {
-    axios.post(`/api/products`, product).then(res => {
+  addProducts = (newProduct) => {
+    axios.post(`/api/products`, newProduct).then(res => {
       this.setState({
         inventory: res.data
       })
@@ -46,13 +46,11 @@ export class App extends Component {
   }
   productToEdit = (id) => {
     this.setState({
-      productToEdit: id
+      productIWantToEdit: id
     })
   }
   render() {
-    // const productId = this.state.inventory.map(product => product.id)
-    // const product = this.state.inventory.map(product => product)
-    console.log('STATE ON APP.JS', this.state.productToEdit)
+    console.log('state of app.js', this.state.productIWantToEdit)
     return (
       <div className="master-div">
         <Header />
@@ -64,14 +62,12 @@ export class App extends Component {
           />
           <Form
             products={this.state.inventory}
-            // product={product}
-            // productId={productId}
             componentDidMount={this.componentDidMount}
             addProducts={this.addProducts}
             productImEditing={this.state.productIWantToEdit}
             editProducts={this.editProducts} 
           />
-          {/* {routes} */}
+          {/* {routes} */} 
       </div>
     )
   }

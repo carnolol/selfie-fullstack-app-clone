@@ -5,6 +5,13 @@ module.exports = {
             res.status(200).send(products)
         }).catch(error => console.log(`error with getAllProducts ${error}`))
     }, 
+    getOneProduct:(req,res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        db.get_one_product(id).then(product => {
+            res.status(200).send(product)
+        }).catch(err => console.log('err w/ get 1 product', err))
+    },
     addProduct:(req,res) => {   
         const db = req.app.get('db')
         const newProduct = {...req.body}
