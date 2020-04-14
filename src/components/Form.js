@@ -38,25 +38,27 @@ class Form extends Component {
         this.props.componentDidMount()
         this.handleCancel()
     }
-    // handleEditProduct = () => {
-        // const updatedProduct = {
-        //     name: this.state.name,
-        //     price: this.state.price,
-        //     img: this.state.img
-        // }
-    //     this.props.editProducts(this.props.product.id, updatedProduct)
-    //     this.props.componentDidMount()
-    // }
+    handleEditProduct = () => {
+        const updatedProduct = {
+            name: this.state.name,
+            price: this.state.price,
+            img: this.state.img
+        }
+        this.props.editProducts(this.props.productImEditing, updatedProduct)
+        this.props.componentDidMount()
+        this.handleCancel()
+    }
     componentDidUpdate = (prevProps) => {
-        console.log('prevProps', prevProps)
+        console.log('prevProps', prevProps.productImEditing)
         console.log('this props', this.props.productImEditing)
-        if (prevProps.productImEditing !== this.state.currentProductId) {
+        if (prevProps.productImEditing !== this.props.productImEditing) {
             axios.get(`/api/inventory/${this.props.productImEditing}`).then(res => {
                 console.log('product im going to update', res.data)
                 this.setState({
                     name: res.data[0].name,
                     price: res.data[0].price,
-                    img: res.data[0].img
+                    img: res.data[0].img,
+                    editmode: false
                 })
                 console.log('res data name' , res.data.name)
             })
@@ -66,9 +68,6 @@ class Form extends Component {
     render() {
         console.log('STATE OF FORM.JS', this.state.currentProductId)
         console.log('wub', this.props.productImEditing)
-
-        // console.log('TEST', this.props.product.id)
-        // console.log(this.props.product)
         return (
             <div className="parent-add-inventory-container">
                 <div className="add-inventory-container">
@@ -111,9 +110,7 @@ class Form extends Component {
                             onClick={this.handleCancel}
                         >Cancel
                         </button>
-                        <button className="form-button"
-                            onClick={this.handleAddNewProduct}>Add to Inventory
-                         </button>
+                        {this.state.editmode ? <button className="form-button" onClick={this.handleAddNewProduct}>Add to Inventory</button> : <button className="form-button" onClick={this.handleEditProduct}>Save My Changes</button>}
                     </div>
                 </div>
             </div>
